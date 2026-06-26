@@ -1,1 +1,299 @@
+<div class="widget-container-iscrizioni">
+    <div class="widget-header-iscrizioni">
+        <h3>Guida al Codice di Iscrizione Riservato più conveniente</h3>
+        <p>Seleziona la tua situazione attuale e la classe di concorso per visualizzare la soluzione più conveniente per te!</p>
+    </div>
 
+    <div class="form-group-iscrizioni">
+        <label for="situazioneIscrizione">1. Seleziona la tua situazione o percorso:</label>
+        <select id="situazioneIscrizione">
+            <option value="">-- Scegli un'opzione --</option>
+            <option value="sostegno">Ho la specializzazione sul sostegno (conseguita nel 2025 o nel 2026)</option>
+            <option value="musicali">Voglio abilitarmi per le discipline musicali del Conservatorio</option>
+            <option value="nessuna">Nessuna delle precedenti (Altro percorso / Nessun sostegno)</option>
+        </select>
+    </div>
+
+    <div class="form-group-iscrizioni">
+        <label for="classeIscrizione">2. Seleziona la classe di concorso cui vuoi iscriverti:</label>
+        <select id="classeIscrizione">
+            <option value="">-- Scegli una classe di concorso --</option>
+            
+            <optgroup label="Docenti Istruzione Secondaria (Tabella A)">
+                <option value="A01">A01 - Arte e immagine</option>
+                <option value="A11">A11 - Discipline letterarie e latino</option>
+                <option value="A12">A12 - Discipline letterarie (Superiori e medie)</option>
+                <option value="A15">A15 - Discipline sanitarie</option>
+                <option value="A18">A18 - Filosofia e Scienze umane</option>
+                <option value="A19">A19 - Filosofia e Storia</option>
+                <option value="A20">A20 - Fisica</option>
+                <option value="A21">A21 - Geografia</option>
+                <option value="A26">A26 - Matematica</option>
+                <option value="A27">A27 - Matematica e Fisica</option>
+                <option value="A28">A28 - Matematica e scienze (Medie)</option>
+                <option value="A31">A31 - Scienze degli alimenti</option>
+                <option value="A34">A34 - Scienze e tecnologie chimiche</option>
+                <option value="A037">A037 - Scienze e tecnologie edilizie</option>
+                <option value="A40">A40 - Scienze e tecnologie elettriche ed elettroniche</option>
+                <option value="A41">A41 - Scienze e tecnologie informatiche</option>
+                <option value="A42">A42 - Scienze e tecnologie meccaniche</option>
+                <option value="A45">A45 - Scienze economico-aziendali</option>
+                <option value="A46">A46 - Scienze giuridico-economiche</option>
+                <option value="A47">A47 - Scienze matematiche applicate</option>
+                <option value="A48">A48 - Scienze motorie e sportive</option>
+                <option value="A50">A50 - Naturali, chimiche e biologiche</option>
+                <option value="A51">A51 - Scienze e tecniche agrarie</option>
+                <option value="A54">A54 - Storia dell'arte</option>
+                <option value="A60">A60 - Tecnologia nella scuola media</option>
+            </optgroup>
+
+            <optgroup label="Lingue Straniere">
+                <option value="AA22">AA22 - Francese</option>
+                <option value="AB22">AB22 - Inglese</option>
+                <option value="AC22">AC22 - Spagnolo</option>
+            </optgroup>
+
+            <optgroup label="Discipline Musicali">
+                <option value="A030">A030 - Musica (Scuola media)</option>
+                <option value="AN55">AN55 - Violoncello</option>
+                <option value="AB56">AB56 - Chitarra</option>
+                <option value="A053">A053 - Storia della musica</option>
+                <option value="A059">A059 - Accompagnamento alla danza</option>
+                <option value="AC55">AC55 - Clarinetto (II grado)</option>
+                <option value="AC56">AC56 - Clarinetto (I grado)</option>
+                <option value="AG56">AG56 - Flauto</option>
+                <option value="AJ55">AJ55 - Pianoforte (II grado)</option>
+                <option value="AJ56">AJ56 - Pianoforte (I grado)</option>
+                <option value="AK56">AK56 - Sassofono</option>
+                <option value="AL55">AL55 - Tromba (II grado)</option>
+                <option value="AL56">AL56 - Tromba (I grado)</option>
+                <option value="AM55">AM55 - Violino (II grado)</option>
+                <option value="AM56">AM56 - Violino (I grado)</option>
+                <option value="AO55">AO55 - Canto</option>
+            </optgroup>
+
+            <optgroup label="Insegnanti Tecnico Pratici (ITP - Tabella B)">
+                <option value="B003">B003 - Laboratori di fisica</option>
+                <option value="B016">B016 - Laboratori di informatica</option>
+                <option value="B018">B018 - Laboratori tessili e moda</option>
+                <option value="B020">B020 - Laboratori di cucina</option>
+                <option value="B021">B021 - Laboratori di sala e vendita</option>
+                <option value="B022">B022 - Laboratori di comunicazioni multimediali</option>
+            </optgroup>
+        </select>
+    </div>
+
+    <button class="btn-calcola-iscrizioni" onclick="elaboraAlgoritmoIscrizione()">Mostra Soluzione e Codice</button>
+
+    <div id="boxRisultatoIscrizione" class="risultato-box-iscrizioni">
+        <div id="titoloRisultatoIscrizione" class="risultato-titolo-iscrizioni"></div>
+        <div id="testoRisultatoIscrizione" class="risultato-testo-iscrizioni"></div>
+    </div>
+</div>
+
+<style>
+    .widget-container-iscrizioni {
+        background-color: #ffffff;
+        border: 1px solid #e0e0e0;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        padding: 25px;
+        max-width: 600px;
+        margin: 20px auto;
+        font-family: Arial, sans-serif;
+    }
+    .widget-header-iscrizioni h3 {
+        color: #0c2340;
+        margin-top: 0;
+        margin-bottom: 5px;
+        font-size: 20px;
+    }
+    .widget-header-iscrizioni p {
+        color: #666;
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    .form-group-iscrizioni {
+        margin-bottom: 18px;
+    }
+    .form-group-iscrizioni label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 6px;
+        font-size: 14px;
+        color: #333;
+    }
+    .form-group-iscrizioni select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 14px;
+        background-color: #fff;
+    }
+    .btn-calcola-iscrizioni {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        background-color: #1d70b8;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+    .btn-calcola-iscrizioni:hover {
+        background-color: #155a96;
+    }
+    .risultato-box-iscrizioni {
+        margin-top: 20px;
+        padding: 15px;
+        border-radius: 6px;
+        display: none;
+        text-align: center;
+    }
+    .status-successo {
+        background-color: #e6f4ea;
+        border: 1px solid #a3cfbb;
+        color: #137333;
+    }
+    .status-errore {
+        background-color: #fce8e6;
+        border: 1px solid #f5c2c7;
+        color: #c5221f;
+    }
+    .status-generico {
+        background-color: #e2f0fd;
+        border: 1px solid #b8daff;
+        color: #004085;
+    }
+    .risultato-titolo-iscrizioni {
+        font-weight: bold;
+        font-size: 15px;
+        margin-bottom: 5px;
+        text-transform: uppercase;
+    }
+    .risultato-testo-iscrizioni {
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 1.5;
+    }
+    /* STILE PER IL BOTTONE DI ISCRIZIONE DIRETTI AI LINK */
+    .btn-link-iscrizione {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 10px 20px;
+        background-color: #0c2340;
+        color: #ffffff !important;
+        text-decoration: none !important;
+        border-radius: 5px;
+        font-size: 14px;
+        font-weight: bold;
+        transition: background-color 0.2s;
+    }
+    .btn-link-iscrizione:hover {
+        background-color: #1d70b8;
+    }
+</style>
+
+<script>
+function elaboraAlgoritmoIscrizione() {
+    const sit = document.getElementById("situazioneIscrizione").value;
+    const cls = document.getElementById("classeIscrizione").value;
+    const box = document.getElementById("boxRisultatoIscrizione");
+    const titolo = document.getElementById("titoloRisultatoIscrizione");
+    const testo = document.getElementById("testoRisultatoIscrizione");
+
+    // Reset Box
+    box.style.display = "none";
+    box.className = "risultato-box-iscrizioni";
+
+    // Validazione input vuoti
+    if (!sit || !cls) {
+        box.style.display = "block";
+        box.classList.add("status-errore");
+        titolo.innerText = "Campi incompleti";
+        testo.innerText = "Per favore, seleziona sia la tua situazione che la classe di concorso.";
+        return;
+    }
+
+    // ARRAYS DI MAPPATURA CLASSI
+    const classiUniCamillus = [
+        "A12", "A15", "A18", "A19", "A20", "A26", "A27", "A28", "A31", "A34", 
+        "A40", "A41", "A42", "A45", "A47", "A48", "A50", "A51", "A60", "AB22", 
+        "B003", "B012", "B016", "B020", "B021"
+    ];
+
+    const classiDanteAlighieri = [
+        "A01", "A11", "A19", "A037", "A54", "AA22", "AC22", "B018", "B022"
+    ];
+
+    const classiUnitelma = [
+        "A12", "A18", "A20", "A21", "A26", "A27", "A45", "A46", "A48", "AB22", "A60"
+    ];
+
+    box.style.display = "block";
+
+    // --- LINK EDITABILI ---
+    const linkUniCamillus = "https://www.formazionedocenti.it/corso-online-mnemosine/UM30CFU";
+    const linkDanteAlighieri = "https://www.formazionedocenti.it/corso-online-mnemosine/RC30CFUART13";
+    const linkConservatorio = "https://www.formazionedocenti.it/corso-online-mnemosine/CM30CFUART13";
+    const linkUnitelma = "https://www.formazionedocenti.it/corso-online-mnemosine/UNT30CFU";
+
+    // --- ESECUZIONE DELLE REGOLE CONDIZIONALI ---
+
+    // REGOLA Conservatorio: Abilitazione discipline musicali del conservatorio
+    if (sit === "musicali") {
+        box.classList.add("status-successo");
+        titolo.innerText = "Soluzione Iscrizione: Conservatorio ad euro 1780 + 16 di marca da bollo";
+        testo.innerHTML = "Buono Amazon €30 - ISCRIVITI CON IL CODICE RISERVATO <span style='color:#055160; background:#cff4fc; padding:2px 6px; border-radius:3px;'>MT30</span><br><span style='font-weight:normal; font-size:14px;'>CON il Conservatorio Statale di Musica “P.I.Tchaikovksy” di Nocera Terinese (CZ)</span><br><a href='" + linkConservatorio + "' target='_blank' class='btn-link-iscrizione'>PER ISCRIVERTI CLICCA QUI!</a>";
+        return;
+    }
+
+    // CASISTICA A: L'utente ha selezionato "Specializzazione Sostegno"
+    if (sit === "sostegno") {
+        // Controllo prioritario per classi A21 e A46 con Sostegno (Unitelma)
+        if (cls === "A21" || cls === "A46") {
+            box.classList.add("status-successo");
+            titolo.innerText = "Soluzione Iscrizione: Unitelma Sapienza ad euro 1650 + 16 di marca da bollo";
+            testo.innerHTML = "SCONTO € 130 - ISCRIVITI CON Università Unitelma e IL CODICE RISERVATO <span style='color:#0f5132; background:#d1e7dd; padding:2px 6px; border-radius:3px;'>MT30UNITELMA</span> per lo sconto di € 130<br><a href='" + linkUnitelma + "' target='_blank' class='btn-link-iscrizione'>PER ISCRIVERTI CLICCA QUI!</a>";
+            return;
+        }
+        else if (classiUniCamillus.includes(cls)) {
+            box.classList.add("status-successo");
+            titolo.innerText = "Soluzione Iscrizione: UniCamillus ad euro 1590 + 16 di marca da bollo";
+            testo.innerHTML = "SCONTO € 100 - ISCRIVITI CON IL CODICE RISERVATO <span style='color:#0f5132; background:#d1e7dd; padding:2px 6px; border-radius:3px;'>MT30TFA25</span><br><span style='font-weight:normal; font-size:14px;'>CON UNICAMILLUS</span><br><a href='" + linkUniCamillus + "' target='_blank' class='btn-link-iscrizione'>PER ISCRIVERTI CLICCA QUI!</a>";
+            return;
+        } 
+        else if (classiDanteAlighieri.includes(cls)) {
+            box.classList.add("status-successo");
+            titolo.innerText = "Soluzione Iscrizione: Dante Alighieri ad euro 1680 + 16 di marca da bollo";
+            testo.innerHTML = "SCONTO € 100 - ISCRIVITI CON IL CODICE RISERVATO <span style='color:#0f5132; background:#d1e7dd; padding:2px 6px; border-radius:3px;'>MT30TFA25</span> per lo sconto di € 100<br><span style='font-weight:normal; font-size:14px;'>CON Università Dante Alighieri di Reggio Calabria</span><br><a href='" + linkDanteAlighieri + "' target='_blank' class='btn-link-iscrizione'>PER ISCRIVERTI CLICCA QUI!</a>";
+            return;
+        }
+    }
+
+    // CASISTICA B: L'utente ha selezionato "Nessuna delle precedenti"
+    if (sit === "nessuna") {
+        if (classiUnitelma.includes(cls)) {
+            box.classList.add("status-successo");
+            titolo.innerText = "Soluzione Promo Unitelma Sapienza: ad euro 1650 + 16 di marca da bollo";
+            testo.innerHTML = "PROMOZIONE DEDICATA ALLE CLASSI DI CONCORSO ISTITUITE DALL'UNIVERSITÀ <br><span style='color:#084298; background:#cfe2ff; padding:2px 6px; border-radius:3px;'>UNITELMA SAPIENZA</span><br><span style='font-weight:normal; font-size:14px;'>Procedi all'iscrizione per riscattare i vantaggi della promo.</span><br><a href='" + linkUnitelma + "' target='_blank' class='btn-link-iscrizione'>PER ISCRIVERTI CLICCA QUI!</a>";
+            return;
+        } 
+        else if (classiDanteAlighieri.includes(cls)) {
+            box.classList.add("status-successo");
+            titolo.innerText = "Soluzione Iscrizione Dante Alighieri: ad euro 1780 + 16 di marca da bollo (Standard)";
+            testo.innerHTML = "buono Amazon € 30 - ISCRIVITI CON IL CODICE RISERVATO <span style='color:#0f5132; background:#d1e7dd; padding:2px 6px; border-radius:3px;'>MT30</span><br><span style='font-weight:normal; font-size:14px;'>CON Università Dante Alighieri di Reggio Calabria</span><br><a href='" + linkDanteAlighieri + "' target='_blank' class='btn-link-iscrizione'>PER ISCRIVERTI CLICCA QUI!</a>";
+            return;
+        }
+    }
+
+    // FALLBACK GENERALE: Se nessuna promozione specifica è attiva (Rimanda a UniCamillus standard con codice MT30)
+    box.className = "risultato-box-iscrizioni status-generico";
+    titolo.innerText = "Iscriviti ad Unicamillus ad euro 1690 + 16 usa il Codice Riservato MT30";
+    testo.innerHTML = "Buono Amazon € 30 - ISCRIVITI CON IL CODICE RISERVATO <span style='color:#004085; background:#b8daff; padding:2px 6px; border-radius:3px;'>MT30</span><br><span style='font-weight:normal; font-size:14px;'>promozione buono amazon attiva per questa combinazione. Puoi utilizzare il codice riservato mt30 per procedere.</span><br><a href='" + linkUniCamillus + "' target='_blank' class='btn-link-iscrizione'>PER ISCRIVERTI CLICCA QUI!</a>";
+}
+</script>
